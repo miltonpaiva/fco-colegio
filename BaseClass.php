@@ -17,8 +17,6 @@ class BaseClass
     public function __construct()
     {
     	self::$routes['users_insert'] = 'Users.php?action=index';
-        self::$DB = DB::getConnection();
-
     	@session_start();
     }
 
@@ -39,6 +37,8 @@ class BaseClass
     {
         // garantindo a instancia
         if (!isset(self::$routes)) { new BaseClass(); }
+
+        self::$DB = DB::getConnection();
 
         // montando as string das colunas e valores
         $str_columns = implode(', ', $columns);
