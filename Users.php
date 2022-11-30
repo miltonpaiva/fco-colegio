@@ -81,7 +81,7 @@ if (isset($_REQUEST['action'])) {
 
 	// VALIDAÇÃO DA EXISTENCIA DO METODO
 	if (!method_exists($u, $_REQUEST['action'])) {
-        $message = "há uma rota que não foi encontrada [{$_REQUEST['action'])}]";
+        $message = "há uma rota que não foi encontrada [{$_REQUEST['action']}]";
         BaseClass::returnError($message);
 	}
 
