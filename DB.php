@@ -18,7 +18,7 @@ class DB
         self::$password   = "tpq26s8qtz8k315d";
         self::$database   = "kuv0hvqh598ze6l5";
 
-        session_start();
+        @session_start();
         $this->connect();
     }
 
