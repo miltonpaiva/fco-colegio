@@ -34,7 +34,7 @@ class DB// extends BaseClass
         } catch(PDOException $e) {
             unset($_SESSION['error']);
 
-            $_SESSION['error'][] =
+            $_SESSION['error'] =
             [
                 'message' => "houve um problema ao se conectar com o banco",
                 'data'    => [$connect_data, $e->getMessage()]

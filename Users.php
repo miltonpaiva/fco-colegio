@@ -7,9 +7,6 @@ include_once 'BaseClass.php';
  */
 class Users extends BaseClass
 {
-	private static $relations;
-	private static $formats;
-
     public function __construct()
     {
 		self::$relations['first_name']  = 'name';
@@ -48,56 +45,34 @@ class Users extends BaseClass
     	$values  = [];
     	$columns = [];
 
-    	foreach (self::$relations as $form_input => $column) {
+		try {
 
-    		// removendo colunas que não foram enviadas ou estão vazias
-    		if (isset($_REQUEST[$form_input]) && $_REQUEST[$form_input] != '') {
-    			$columns[] = $column;
+	    	foreach (self::$relations as $form_input => $column) {
 
-    			// aplicando formatação nos campos que forem necessarios
-    			$values[]  = $this->formats($column, $_REQUEST[$form_input]);
-    		}
-    	}
+	    		// removendo colunas que não foram enviadas ou estão vazias
+	    		if (isset($_REQUEST[$form_input]) && $_REQUEST[$form_input] != '') {
+	    			$columns[] = $column;
 
-		$result = $this->insert('users', $columns, $values);
-		if ($result) {
-			echo 'inserido';
+	    			// aplicando formatação nos campos que forem necessarios
+	    			$values[]  = $this->formats($column, $_REQUEST[$form_input]);
+	    		}
+	    	}
+
+			$result = $this->insert('users', $columns, $values);
+
+			if ($result) {
+				echo 'inserido';
+			}
+
+		} catch (Exception $e) {
+			$message = "não foi possivel completar a ação";
+			$data    = $e->getMessage();
+			BaseClass::returnError($message, $data);
+		} catch (Error $e) {
+			$message = "não foi possivel completar a ação";
+			$data    = $e->getMessage();
+			BaseClass::returnError($message, $data);
 		}
-    }
-
-    /**
-     * APLICA A FORMATAÇÃO CONFORME PREDEFINIDO
-     * @param  string $column
-     * @param  string $value
-     * @return string
-     */
-    private function formats($column, $value)
-    {
-    	// quando não houver formatação para alguma coluna
-    	if (!isset(self::$formats[$column])) return $value;
-
-    	$format = self::$formats[$column];
-    	return $this->{$format}($value);
-    }
-
-    /**
-     * remove todos os caracteres não numericos
-     * @param  string $str
-     * @return string
-     */
-    private function only_numbers($str)
-    {
-    	return preg_replace('/[^0-9]/', '', $str);
-    }
-
-    /**
-     * FORMATA A DATA PARA INSERÇÃO
-     * @param  string $str
-     * @return string
-     */
-    private function db_date($str)
-    {
-    	return date("Y-m-d", strtotime($str));
     }
 }
 
@@ -106,9 +81,19 @@ if (isset($_REQUEST['action'])) {
 
 	// VALIDAÇÃO DA EXISTENCIA DO METODO
 	if (!method_exists($u, $_REQUEST['action'])) {
-	    echo json_encode(["Metodo [{$_REQUEST['action']}] não encontrado"]);
-	    exit();
+        $message = "há uma rota que não foi encontrada [{$_REQUEST['action'])}]";
+        BaseClass::returnError($message);
 	}
 
-	$u->{$_REQUEST['action']}();
+	try {
+		$u->{$_REQUEST['action']}();
+	} catch (Exception $e) {
+		$message = "não foi possivel executar o metodo [{$_REQUEST['action']}]";
+		$data    = $e->getMessage();
+		BaseClass::returnError($message, $data);
+	} catch (Error $e) {
+		$message = "não foi possivel executar o metodo [{$_REQUEST['action']}]";
+		$data    = $e->getMessage();
+		BaseClass::returnError($message, $data);
+	}
 }

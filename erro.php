@@ -8,7 +8,7 @@
                     <h2 class="title">Erro!</h2>
                 </div>
                 <div class="card-body">
-                    <div class="name"><?= current(@max($_SESSION['error'])); ?> <br><a href="<?= $_SERVER['HTTP_REFERER']; ?>"> clique aqui para retornar ao formulario</a></div>
+                    <div class="name"><?= $_SESSION['error']['message']; ?> <br><a href="./"> clique aqui para retornar ao formulario</a></div>
                 </div>
                 <!-- <?php print_r($_SESSION); ?> -->
             </div>
