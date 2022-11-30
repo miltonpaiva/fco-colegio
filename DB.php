@@ -3,7 +3,7 @@
 /**
  * classe responsavel pela conexão com o banco de dados
  */
-class DB// extends BaseClass
+class DB
 {
     private static $servername;
     private static $username;
@@ -32,6 +32,7 @@ class DB// extends BaseClass
             self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch(PDOException $e) {
+            @session_start();
             unset($_SESSION['error']);
 
             $_SESSION['error'] =
