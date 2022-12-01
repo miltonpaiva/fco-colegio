@@ -343,7 +343,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                             </div>
                         </div>
 
-                        <iframe src="/assina_pdf/assinatura.php" frameborder="0" width="600" height="350"></iframe>
+                        <iframe src="./assinatura.php" frameborder="0" width="600" height="350"></iframe>
 
                         <div>
                             <button class="btn btn--radius-2 btn--red" id="bntRegistrar" type="submit">Registrar</button>
