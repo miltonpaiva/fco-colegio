@@ -10,12 +10,13 @@
     setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
     date_default_timezone_set('America/Sao_Paulo');
 
-    $user = $u->getUserByEmail($_SESSION['user']['email']);
+    $user = $u->getUserByEmail($_SESSION['user_data']['email']);
 
     $user['data_inicial'] = date("d/m/Y");
     $user['dia'] = date("d");
     $user['mes'] = strftime('%B', strtotime('today'));
     $user['ano'] = date("Y");
+    $user['cpf'] = str_pad($user['cpf'] , 11 , '0' , STR_PAD_LEFT);
 
     $project_dir = dirname($_SERVER['SCRIPT_NAME']);
     $project_url = "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['SERVER_NAME']}{$project_dir}";
