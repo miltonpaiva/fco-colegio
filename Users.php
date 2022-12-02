@@ -60,18 +60,32 @@ class Users extends BaseClass
 	    		}
 	    	}
 
+	    	@session_start();
+	    	$_SESSION['user_data'] = $_REQUEST;
+
+	    	$path_img = str_replace(basename(__FILE__), '', $_SERVER['SCRIPT_FILENAME']);
+	    	if (!file_exists("{$path_img}/images/" . self::only_numbers($_REQUEST['cpf']) . ".jpeg")) {
+				$message = "imagem de assinatura não encontrada, certifique de SALVAR ASSINATURA antes de finalizar o formulario";
+				$data    = "{$path_img}/images/" . self::only_numbers($_REQUEST['cpf']) . ".jpeg";
+				BaseClass::returnError($message, $data);
+	    	}
+
 			$result = $this->insert('users', $columns, $values);
 
 			if ($result) {
-				echo 'inserido';
+		        $project_dir = dirname($_SERVER['SCRIPT_NAME']);
+		        $project_url = "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['SERVER_NAME']}{$project_dir}";
+
+	            header("Location: {$project_url}/download.php");
+	            exit();
 			}
 
 		} catch (Exception $e) {
-			$message = "não foi possivel completar a ação";
+			$message = "não foi possivel completar a ação (1)";
 			$data    = $e->getMessage();
 			BaseClass::returnError($message, $data);
 		} catch (Error $e) {
-			$message = "não foi possivel completar a ação";
+			$message = "não foi possivel completar a ação (2)";
 			$data    = $e->getMessage();
 			BaseClass::returnError($message, $data);
 		}
