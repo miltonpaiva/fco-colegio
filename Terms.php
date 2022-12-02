@@ -24,13 +24,13 @@ class Terms extends BaseClass
 			return current($result)['term'];
 
 		} catch (Exception $e) {
-			$message = "não foi possivel retornar o termo";
+			$message = "não foi possivel retornar o termo verifique a conexão";
 			$data    = $e->getMessage();
-			BaseClass::returnError($message, $data);
+			return BaseClass::returnError($message, $data, false)['error']['message'];
 		} catch (Error $e) {
-			$message = "não foi possivel retornar o termo";
+			$message = "não foi possivel retornar o termo verifique a conexão";
 			$data    = $e->getMessage();
-			BaseClass::returnError($message, $data);
+			return BaseClass::returnError($message, $data, false)['error']['message'];
 		}
     }
 }
