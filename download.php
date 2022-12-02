@@ -42,7 +42,7 @@
 
         return $local_str;
     }
-
+session_destroy();
 ?>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css" rel="stylesheet" />
 <style>
