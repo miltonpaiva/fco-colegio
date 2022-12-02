@@ -3,6 +3,8 @@
     include 'Terms.php';
 
     $t = new Terms();
+
+    @session_start();
 ?>
 
 <style>
@@ -103,7 +105,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                        <input class="input--style-5" style="width:200%" id="nome" type="text" name="first_name" placeholder="Nome completo" required>
+                                        <input class="input--style-5" style="width:200%" id="nome" type="text" name="first_name" placeholder="Nome completo" required value="<?= $_SESSION['user_data']['first_name']?>">
                                         <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -117,7 +119,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="cpf" type="text" name="cpf" placeholder="CPF" required>
+                                            <input class="input--style-5" id="cpf" type="text" name="cpf" placeholder="CPF" required value="<?= $_SESSION['user_data']['cpf']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -131,7 +133,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space datepicker">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5 datepicker" id="nascimento" type="text" name="data_nasc" placeholder="Nascimento" readonly required>
+                                            <input class="input--style-5 datepicker" id="nascimento" type="text" name="data_nasc" placeholder="Nascimento" readonly required value="<?= $_SESSION['user_data']['data_nasc']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -139,7 +141,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                     <div class="col-3">
                                         <div class="input-group-desc">
                                             <label class="label--desc" style="left: -80%;">idade:</label>
-                                            <input class="input--style-5 age" id="idade" type="text" name="age" readonly>
+                                            <input class="input--style-5 age" id="idade" type="text" name="age" readonly value="<?= $_SESSION['user_data']['age']?>">
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +153,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="nacionalidade" type="text" name="nacionalidade" placeholder="Nacionalidade" required>
+                                            <input class="input--style-5" id="nacionalidade" type="text" name="nacionalidade" placeholder="Nacionalidade" required value="<?= $_SESSION['user_data']['nacionalidade']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -164,7 +166,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="profissao" type="text" name="profissao" placeholder="Profissao" required>
+                                            <input class="input--style-5" id="profissao" type="text" name="profissao" placeholder="Profissao" required value="<?= $_SESSION['user_data']['profissao']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -177,14 +179,14 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="endereco" type="text" name="rua" placeholder="Endereço" required>
+                                            <input class="input--style-5" id="endereco" type="text" name="rua" placeholder="Endereço" required value="<?= $_SESSION['user_data']['rua']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group-desc">
                                             <label class="label--desc" style="left: -80%;">Numero:</label>
-                                            <input class="input--style-5" id="numero" type="text" name="numero" placeholder="" required>
+                                            <input class="input--style-5" id="numero" type="text" name="numero" placeholder="" required value="<?= $_SESSION['user_data']['numero']?>">
                                         </div>
                                     </div>
                                 </div>
@@ -197,7 +199,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="cep" type="text" name="cep" placeholder="CEP" required>
+                                            <input class="input--style-5" id="cep" type="text" name="cep" placeholder="CEP" required value="<?= $_SESSION['user_data']['cep']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -211,7 +213,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="bairro" type="text" name="bairro" placeholder="" style="width: 80%;" required>
+                                            <input class="input--style-5" id="bairro" type="text" name="bairro" placeholder="" style="width: 80%;" required value="<?= $_SESSION['user_data']['bairro']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -225,7 +227,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="complemento" type="text" name="Complemento" placeholder="" required>
+                                            <input class="input--style-5" id="complemento" type="text" name="Complemento" placeholder="" required value="<?= $_SESSION['user_data']['Complemento']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -239,7 +241,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="cidade" placeholder="" required>
+                                            <input class="input--style-5" type="text" name="cidade" placeholder="" required value="<?= $_SESSION['user_data']['cidade']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -248,36 +250,36 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                             <label class="label--desc" style="left: -80%;">UF:</label>
                                             <div class="input-group">
                                                 <div class="rs-select2 js-select-simple select--no-search">
-                                                    <select name="uf" required>
+                                                    <select name="uf" required >
                                                         <option disabled="disabled" selected="selected"></option>
-                                                        <option value="AC">AC</option>
-                                                        <option value="AP">AP</option>
-                                                        <option value="AM">AM</option>
-                                                        <option value="BA">BA</option>
-                                                        <option value="CE">CE</option>
-                                                        <option value="DF">DF</option>
-                                                        <option value="ES">ES</option>
-                                                        <option value="GO">GO</option>
-                                                        <option value="MA">MA</option>
-                                                        <option value="MT">MT</option>
-                                                        <option value="MS">MS</option>
-                                                        <option value="MG">MG</option>
-                                                        <option value="PA">PA</option>
-                                                        <option value="PB">PB</option>
-                                                        <option value="PR">PR</option>
-                                                        <option value="PE">PE</option>
-                                                        <option value="PI">PI</option>
-                                                        <option value="RJ">RJ</option>
-                                                        <option value="RN">RN</option>
-                                                        <option value="RS">RS</option>
-                                                        <option value="RO">RO</option>
-                                                        <option value="RR">RR</option>
-                                                        <option value="SC">SC</option>
-                                                        <option value="SP">SP</option>
-                                                        <option value="SE">SE</option>
-                                                        <option value="TO">TO</option>
-                                                        <option value="EX">EX</option>
-                                                        <option value="AL">AL</option>
+                                                        <option value="AC" <?= $_SESSION['user_data']['uf'] == 'AC' ? 'selected' : '' ; ?> >AC</option>
+                                                        <option value="AP" <?= $_SESSION['user_data']['uf'] == 'AP' ? 'selected' : '' ; ?> >AP</option>
+                                                        <option value="AM" <?= $_SESSION['user_data']['uf'] == 'AM' ? 'selected' : '' ; ?> >AM</option>
+                                                        <option value="BA" <?= $_SESSION['user_data']['uf'] == 'BA' ? 'selected' : '' ; ?> >BA</option>
+                                                        <option value="CE" <?= $_SESSION['user_data']['uf'] == 'CE' ? 'selected' : '' ; ?> >CE</option>
+                                                        <option value="DF" <?= $_SESSION['user_data']['uf'] == 'DF' ? 'selected' : '' ; ?> >DF</option>
+                                                        <option value="ES" <?= $_SESSION['user_data']['uf'] == 'ES' ? 'selected' : '' ; ?> >ES</option>
+                                                        <option value="GO" <?= $_SESSION['user_data']['uf'] == 'GO' ? 'selected' : '' ; ?> >GO</option>
+                                                        <option value="MA" <?= $_SESSION['user_data']['uf'] == 'MA' ? 'selected' : '' ; ?> >MA</option>
+                                                        <option value="MT" <?= $_SESSION['user_data']['uf'] == 'MT' ? 'selected' : '' ; ?> >MT</option>
+                                                        <option value="MS" <?= $_SESSION['user_data']['uf'] == 'MS' ? 'selected' : '' ; ?> >MS</option>
+                                                        <option value="MG" <?= $_SESSION['user_data']['uf'] == 'MG' ? 'selected' : '' ; ?> >MG</option>
+                                                        <option value="PA" <?= $_SESSION['user_data']['uf'] == 'PA' ? 'selected' : '' ; ?> >PA</option>
+                                                        <option value="PB" <?= $_SESSION['user_data']['uf'] == 'PB' ? 'selected' : '' ; ?> >PB</option>
+                                                        <option value="PR" <?= $_SESSION['user_data']['uf'] == 'PR' ? 'selected' : '' ; ?> >PR</option>
+                                                        <option value="PE" <?= $_SESSION['user_data']['uf'] == 'PE' ? 'selected' : '' ; ?> >PE</option>
+                                                        <option value="PI" <?= $_SESSION['user_data']['uf'] == 'PI' ? 'selected' : '' ; ?> >PI</option>
+                                                        <option value="RJ" <?= $_SESSION['user_data']['uf'] == 'RJ' ? 'selected' : '' ; ?> >RJ</option>
+                                                        <option value="RN" <?= $_SESSION['user_data']['uf'] == 'RN' ? 'selected' : '' ; ?> >RN</option>
+                                                        <option value="RS" <?= $_SESSION['user_data']['uf'] == 'RS' ? 'selected' : '' ; ?> >RS</option>
+                                                        <option value="RO" <?= $_SESSION['user_data']['uf'] == 'RO' ? 'selected' : '' ; ?> >RO</option>
+                                                        <option value="RR" <?= $_SESSION['user_data']['uf'] == 'RR' ? 'selected' : '' ; ?> >RR</option>
+                                                        <option value="SC" <?= $_SESSION['user_data']['uf'] == 'SC' ? 'selected' : '' ; ?> >SC</option>
+                                                        <option value="SP" <?= $_SESSION['user_data']['uf'] == 'SP' ? 'selected' : '' ; ?> >SP</option>
+                                                        <option value="SE" <?= $_SESSION['user_data']['uf'] == 'SE' ? 'selected' : '' ; ?> >SE</option>
+                                                        <option value="TO" <?= $_SESSION['user_data']['uf'] == 'TO' ? 'selected' : '' ; ?> >TO</option>
+                                                        <option value="EX" <?= $_SESSION['user_data']['uf'] == 'EX' ? 'selected' : '' ; ?> >EX</option>
+                                                        <option value="AL" <?= $_SESSION['user_data']['uf'] == 'AL' ? 'selected' : '' ; ?> >AL</option>
                                                     </select>
                                                     <div class="select-dropdown"></div>
                                                 </div>
@@ -294,13 +296,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="celular" type="text" name="celular" placeholder="Celular" required>
+                                            <input class="input--style-5" id="celular" type="text" name="celular" placeholder="Celular" required value="<?= $_SESSION['user_data']['celular']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="fixo" type="text" name="fixo" placeholder="Fixo">
+                                            <input class="input--style-5" id="fixo" type="text" name="fixo" placeholder="Fixo" value="<?= $_SESSION['user_data']['fixo']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -312,7 +314,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                             <div class="name">*Email</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" id="email" type="email" name="email" required>
+                                    <input class="input--style-5" id="email" type="email" name="email" required value="<?= $_SESSION['user_data']['email']?>">
                                 </div>
                             </div>
                         </div>
@@ -321,7 +323,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                             <div class="name">*Confimação Email</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" id="emailConf" type="email" required>
+                                    <input class="input--style-5" id="emailConf" type="email" required value="<?= $_SESSION['user_data']['email']?>">
                                 </div>
                             </div>
                         </div>
@@ -332,7 +334,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="senha" type="password" name="senha" required>
+                                            <input class="input--style-5" id="senha" type="password" name="senha" required value="<?= $_SESSION['user_data']['senha']?>">
                                             <label class="label--desc">*A senha deve conter de 5 a 8 caracters.</label>
                                         </div>
                                     </div>
@@ -346,7 +348,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="senhaConf" type="password" required>
+                                            <input class="input--style-5" id="senhaConf" type="password" required value="<?= $_SESSION['user_data']['senha']?>">
                                             <label class="label--desc"></label>
                                         </div>
                                     </div>
@@ -357,12 +359,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         <div class="form-row">
                             <div class="value">
                                 <div class="input-group">
-                                    <input type="button" class="btn btn--radius-2 btn--green" id="myBtn" value="Visualizar Contrato"/>
+                                    <input type="button" class="btn btn--radius-2 btn--green" id="myBtn" onclick="setUrlIframe()" value="Visualizar Contrato"/>
                                 </div>
                             </div>
                         </div>
 
-                        <iframe src="./assinatura.php" frameborder="0" width="600" height="350"></iframe>
+                        <iframe src="" frameborder="0" width="600" height="350" id="iframe_assinatura"></iframe>
 
                         <div>
                             <button class="btn btn--radius-2 btn--red" id="bntRegistrar" type="submit">Registrar</button>
@@ -401,7 +403,12 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
-  modal.style.display = "block";
+
+    if (!setUrlIframe()) {
+        return false
+    }
+
+    modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -415,6 +422,22 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+
+function setUrlIframe() {
+    let iframe_assinatura = document.getElementById('iframe_assinatura');
+    let imput_cpf         = document.getElementById('cpf');
+
+    if (imput_cpf.value == '') {
+        alert('preencha o cpf primeiro!');
+        return false;
+    }
+
+    iframe_assinatura.src = './assinatura.php?cpf=' + imput_cpf.value.replace(/([^\d])+/gim, '');
+
+    return true;
+}
+
 </script>
 
     <script src="js/validaAprender.js"></script>
