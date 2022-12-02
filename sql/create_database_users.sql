@@ -7,8 +7,6 @@ CREATE TABLE `users` (
   `cpf` bigint NOT NULL,
   `birth_date` date NOT NULL,
   `age` int DEFAULT NULL,
-  `nacionalidade` varchar(20) NOT NULL,
-  `profissao` varchar(25) NOT NULL,
   `road` varchar(100) NOT NULL,
   `post_code` bigint NOT NULL,
   `district` varchar(100) NOT NULL,
@@ -22,5 +20,7 @@ CREATE TABLE `users` (
   `password` varchar(250) NOT NULL,
   `signature` mediumtext,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `nationality` varchar(100) NOT NULL,
+  `profession` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
