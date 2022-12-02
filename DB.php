@@ -41,8 +41,8 @@ class DB
                 'data'    => [$connect_data, $e->getMessage()]
             ];
 
-            header("Location: {$_SERVER['HTTP_REFERER']}erro.php");
-            die();
+            return ['error' => $_SESSION['error']];
+
         }
 
     }
