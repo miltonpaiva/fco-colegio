@@ -245,7 +245,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                     </div>
                                     <div class="col-3">
                                         <div class="input-group-desc">
-                                            <label class="label--desc" style="left: -80%;">uf:</label>
+                                            <label class="label--desc" style="left: -80%;">UF:</label>
                                             <div class="input-group">
                                                 <div class="rs-select2 js-select-simple select--no-search">
                                                     <select name="uf" required>

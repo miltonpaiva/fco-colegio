@@ -7,6 +7,8 @@ CREATE TABLE `users` (
   `cpf` bigint NOT NULL,
   `birth_date` date NOT NULL,
   `age` int DEFAULT NULL,
+  `nacionalidade` varchar(20) NOT NULL,
+  `profissao` varchar(25) NOT NULL,
   `road` varchar(100) NOT NULL,
   `post_code` bigint NOT NULL,
   `district` varchar(100) NOT NULL,

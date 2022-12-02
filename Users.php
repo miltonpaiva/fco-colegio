@@ -14,6 +14,8 @@ class Users extends BaseClass
 		self::$relations['cpf']         = 'cpf';
 		self::$relations['data_nasc']   = 'birth_date';
 		self::$relations['age']         = 'age';
+		self::$relations['nacionalidade'] = 'nacionalidade';
+		self::$relations['profissao'] = 'profissao';
 		self::$relations['rua']         = 'road';
 		self::$relations['numero']      = 'road_number';
 		self::$relations['cep']         = 'post_code';

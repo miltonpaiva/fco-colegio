@@ -9,5 +9,6 @@ $(document).ready(function() {
         maxDate: new Date(),
         chageMonth:true,
         changeYear:true,
+        yearRange: '1971:2022',
     });
 })
