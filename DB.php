@@ -13,10 +13,10 @@ class DB
 
     public function __construct()
     {
-        self::$servername = "t07cxyau6qg7o5nz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-        self::$username   = "xyig90swkqv4oprt";
-        self::$password   = "tpq26s8qtz8k315d";
-        self::$database   = "kuv0hvqh598ze6l5";
+        self::$servername = "banco";
+        self::$username   = "user-trabalho";
+        self::$password   = "jkiGOzekHbaqBW6I";
+        self::$database   = "db-trabalho";
 
         @session_start();
         $this->connect();

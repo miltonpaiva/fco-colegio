@@ -103,14 +103,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" id="nome" type="text" name="first_name" placeholder="Nome completo" required>
-                                            <label class="label--desc"></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="last_name" placeholder="Apelido">
-                                            <label class="label--desc"></label>
+                                        <input class="input--style-5" style="width:200%" id="nome" type="text" name="first_name" placeholder="Nome completo" required>
+                                        <label class="label--desc"></label>
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +145,32 @@ body {font-family: Arial, Helvetica, sans-serif;}
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-row m-b-55">
+                            <div class="name">*Nacionalidade</div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" id="nacionalidade" type="text" name="nacionalidade" placeholder="Nacionalidade" required>
+                                            <label class="label--desc"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">*Profissão</div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" id="profissao" type="text" name="profissao" placeholder="Profissao" required>
+                                            <label class="label--desc"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-row m-b-55">
                             <div class="name">*Rua/AV.</div>
                             <div class="value">
@@ -338,7 +357,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
                         <div class="form-row">
                             <div class="value">
                                 <div class="input-group">
-                                    <input type="button" class="btn btn--radius-2 btn--green" id="myBtn" value="Ler o Termo"/>
+                                    <input type="button" class="btn btn--radius-2 btn--green" id="myBtn" value="Visualizar Contrato"/>
                                 </div>
                             </div>
                         </div>
@@ -364,7 +383,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <h2>Termo</h2>
         </div>
         <div class="modal-body">
-            <?= $t->getLastTerm(); ?>
+        <?= str_replace("\n", '<br>', $t->getLastTerm()); ?>
         </div>
       </div>
 
