@@ -9,24 +9,24 @@ class Users extends BaseClass
 {
     public function __construct()
     {
-		self::$relations['first_name']  = 'name';
-		self::$relations['last_name']   = 'surname';
-		self::$relations['cpf']         = 'cpf';
-		self::$relations['data_nasc']   = 'birth_date';
-		self::$relations['age']         = 'age';
-		self::$relations['nacionalidade'] = 'nacionalidade';
-		self::$relations['profissao'] = 'profissao';
-		self::$relations['rua']         = 'road';
-		self::$relations['numero']      = 'road_number';
-		self::$relations['cep']         = 'post_code';
-		self::$relations['bairro']      = 'district';
-		self::$relations['Complemento'] = 'complement';
-		self::$relations['cidade']      = 'County';
-		self::$relations['uf']          = 'uf';
-		self::$relations['celular']     = 'cell_phone';
-		self::$relations['fixo']        = 'residential';
-		self::$relations['email']       = 'email';
-		self::$relations['senha']       = 'password';
+		self::$relations['first_name']    = 'name';
+		self::$relations['last_name']     = 'surname';
+		self::$relations['nacionalidade'] = 'nationality';
+		self::$relations['profissao']     = 'profession';
+		self::$relations['cpf']           = 'cpf';
+		self::$relations['data_nasc']     = 'birth_date';
+		self::$relations['age']           = 'age';
+		self::$relations['rua']           = 'road';
+		self::$relations['numero']        = 'road_number';
+		self::$relations['cep']           = 'post_code';
+		self::$relations['bairro']        = 'district';
+		self::$relations['Complemento']   = 'complement';
+		self::$relations['cidade']        = 'County';
+		self::$relations['uf']            = 'uf';
+		self::$relations['celular']       = 'cell_phone';
+		self::$relations['fixo']          = 'residential';
+		self::$relations['email']         = 'email';
+		self::$relations['senha']         = 'password';
 
 		self::$formats['cpf']         = 'only_numbers';
 		self::$formats['age']         = 'only_numbers';
@@ -74,6 +74,28 @@ class Users extends BaseClass
 			$message = "não foi possivel completar a ação";
 			$data    = $e->getMessage();
 			BaseClass::returnError($message, $data);
+		}
+    }
+
+    public function getUserByEmail($email)
+    {
+    	try {
+			$stmt = DB::getConnection(false)->prepare("SELECT * FROM users WHERE email = '{$email}' ORDER BY id DESC LIMIT 1");
+			$stmt->execute();
+
+			$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+			$result = $stmt->fetchAll();
+
+			return current($result);
+
+		} catch (Exception $e) {
+			$message = "não foi possivel retornar o usuario verifique a conexão (1)";
+			$data    = $e->getMessage();
+			return BaseClass::returnError($message, $data, false)['error']['message'];
+		} catch (Error $e) {
+			$message = "não foi possivel retornar o usuario verifique a conexão (2)";
+			$data    = $e->getMessage();
+			return BaseClass::returnError($message, $data, false)['error']['message'];
 		}
     }
 }
