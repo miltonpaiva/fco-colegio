@@ -1,0 +1,19 @@
+CONTRATO DE TROCA DE SERVIÇOS
+
+Pelo presente instrumento, de um lado {{nome}}, {{nacionalidade}}, {{profissao}}, inscrito(a) no CPF sob o nº {{cpf}}, residente e domiciliado(a) à {{endereco}}, doravante denominado(a) PRESTADOR(a) e de outro lado tec-servicos, inscrita no CNPJ sob o nº 9898849400-1, localizada na Rua 10 Conjunto 31, doravante denominado EMPRESA CONTRATANTE, firmam contrato de troca de serviços que será regido pelas cláusulas abaixo estabelecidas.
+
+Cláusula 1ª. O(a) PRIMEIRO(a) PRESTADOR(a) se obriga a prestar ao(à) EMPRESA CONTRATANTE o serviço de Manutenção de Hardware, o qual será realizado entre os dias {{data_inicial}} e 01/11/2023.
+
+Cláusula 2ª. A EMPRESA CONTRATANTE se obriga a prestar ao(à) PRESTADOR(a) o serviço de comunicação com o cliente, o qual será realizado entre os dias {{data_inicial}} e 01/11/2023.
+
+Cláusula 3ª. Uma vez prestados os serviços especificados nas cláusulas anteriores, não será devido nenhum valor entre as partes, estando quitadas suas obrigações.
+
+Cláusula 4ª. Na hipótese de descumprimento da obrigação por uma das partes, pela não prestação do serviço especificado, a parte inadimplente terá que pagar à outra a importância de R$ 30.000,00 (Trinta Mil Reais), atribuído como valor dos serviços não prestados, sobre a qual incidem juros de mora de 1% (um por cento) ao mês e correção monetária pelo INPC.
+
+Cláusula 5ª. O presente contrato é firmado em caráter irrevogável e irretratável, vinculando as partes, seus herdeiros e sucessores, sendo vedado o direito de arrependimento ou desistência.
+
+E, por estarem justos e contratados, assinam o presente contrato.
+
+{{município}}, {{dia}} de {{mes}} de {{ano}}.
+
+{{nome}}

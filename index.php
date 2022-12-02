@@ -439,9 +439,6 @@ function setUrlIframe() {
 }
 
 </script>
-
-    <script src="js/validaAprender.js"></script>
-    <script src="js/validaEsportes.js"></script>
     <script src="js/validaSenha.js"></script>
     <script src="js/validaEmail.js"></script>
     <script src="js/validaCampoNumero.js"></script>
