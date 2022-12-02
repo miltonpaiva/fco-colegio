@@ -17,6 +17,7 @@ class BaseClass
     public function __construct()
     {
     	self::$routes['users_insert'] = 'Users.php?action=index';
+        self::$routes['error']        = 'erro.php';
     	@session_start();
     }
 
@@ -27,8 +28,8 @@ class BaseClass
 
     	if (!isset(self::$routes[$route])) {
             $message = "há uma rota que não foi encontrada [{$route}]";
-            BaseClass::returnError($message);
-    	 }
+            return self::$routes['error'] . '?message=' . $message;
+    	}
 
     	return self::$routes[$route];
     }
@@ -98,7 +99,7 @@ class BaseClass
         return date("Y-m-d", strtotime($str));
     }
 
-    public static function returnError($message, $data = [])
+    public static function returnError($message, $data = [], $redirect = true)
     {
         // garantindo a instancia
         if (!isset(self::$routes)) { new BaseClass(); }
@@ -111,7 +112,16 @@ class BaseClass
             'data'    => $data,
         ];
 
-        header("Location: {$_SERVER['HTTP_REFERER']}erro.php");
-        die();
+        $project_dir = dirname($_SERVER['SCRIPT_NAME']);
+        $project_url = "{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['SERVER_NAME']}{$project_dir}";
+
+        if ($redirect) {
+            header("Location: {$project_url}/" . self::$routes['error']);
+            exit();
+        }
+
+        $_SESSION['error']['message'] .= "<a href='{$project_url}/" . self::$routes['error'] . "' target='blank' > clique aqui para ver o erro </a>";
+
+        return ['error' => $_SESSION['error']];
     }
 }
